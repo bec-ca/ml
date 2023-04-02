@@ -1,0 +1,104 @@
+cpp_library:
+  name: datapoint
+  headers: datapoint.hpp
+
+cpp_library:
+  name: ewcovar
+  sources: ewcovar.cpp
+  headers: ewcovar.hpp
+
+cpp_test:
+  name: ewcovar_test
+  sources: ewcovar_test.cpp
+  libs:
+    /bee/format
+    /bee/testing
+    ewcovar
+    ewstats
+  output: ewcovar_test.out
+
+cpp_library:
+  name: ewma
+  sources: ewma.cpp
+  headers: ewma.hpp
+  libs:
+    /yasf/serializer
+    /yasf/value
+
+cpp_library:
+  name: ewstats
+  sources: ewstats.cpp
+  headers: ewstats.hpp
+
+cpp_test:
+  name: ewstats_test
+  sources: ewstats_test.cpp
+  libs:
+    /bee/format
+    /bee/testing
+    ewstats
+  output: ewstats_test.out
+
+cpp_binary:
+  name: example
+  libs: example_main
+
+cpp_library:
+  name: example_main
+  sources: example_main.cpp
+  libs:
+    /bee/file_writer
+    /bee/format
+    /bee/format_memory
+    /bee/format_vector
+    /bee/time
+    /command/command_builder
+    /command/group_builder
+    /csv/csv_file
+    datapoint
+    fast_tree
+    gut_config
+    node
+
+cpp_library:
+  name: fast_tree
+  sources: fast_tree.cpp
+  headers: fast_tree.hpp
+  libs: node
+
+cpp_library:
+  name: gut
+  sources: gut.cpp
+  headers: gut.hpp
+  libs:
+    /yasf/serializer
+    /yasf/value
+    datapoint
+    fast_tree
+    gut_config
+
+cpp_library:
+  name: gut_config
+  headers: gut_config.hpp
+
+cpp_library:
+  name: node
+  sources: node.cpp
+  headers: node.hpp
+  libs:
+    /bee/format
+    /bee/nref
+    /yasf/serializer
+    /yasf/value
+    datapoint
+    ewcovar
+    ewma
+    ewstats
+    gut_config
+    rng
+
+cpp_library:
+  name: rng
+  sources: rng.cpp
+  headers: rng.hpp
+
